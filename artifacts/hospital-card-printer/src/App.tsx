@@ -213,7 +213,7 @@ function Home() {
             <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))]">
                 <ShieldCheck size={15} className="text-[hsl(var(--primary))]" />
-                <span>Landscape card · 85.6 × 53.1 mm</span>
+                 <span>CR80 card · 85.6 × 53.98 mm</span>
               </div>
               <button className="primary-button w-full sm:w-auto" data-testid="button-print" type="button" onClick={() => window.print()}>
                 <Printer size={17} /> Print card

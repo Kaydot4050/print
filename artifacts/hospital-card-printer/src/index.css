@@ -411,12 +411,37 @@ button { cursor: pointer; }
 }
 
 @media print {
-  @page { size: 85.6mm 53.1mm; margin: 0; }
-  html, body { width: 85.6mm; height: 53.1mm; background: #fff !important; }
+  @page { size: 85.6mm 53.98mm; margin: 0; }
+  html, body {
+    width: 85.6mm;
+    height: 53.98mm;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden;
+    background: #fff !important;
+  }
+  .noise::after { display: none !important; }
   body * { visibility: hidden !important; }
   .print-only, .print-only * { visibility: visible !important; }
-  .print-only { display: block !important; position: absolute; left: 0; top: 0; width: 85.6mm; height: 53.1mm; }
-  .print-only .id-card { width: 85.6mm; height: 53.1mm; border: 0; box-shadow: none; }
+  .print-only {
+    display: block !important;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 85.6mm;
+    height: 53.98mm;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .print-only .id-card {
+    width: 85.6mm;
+    height: 53.98mm;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
   .print-only .card-header { min-height: 0; }
 }
 
