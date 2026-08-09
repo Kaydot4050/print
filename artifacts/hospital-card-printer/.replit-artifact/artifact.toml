@@ -1,0 +1,28 @@
+kind = "web"
+previewPath = "/"
+title = "Hospital Card Printer"
+description = "A browser-based hospital identification card printer that captures client details, previews a branded card matching the provided reference, generates a barcode from the GHIMS number, and prints the finished card."
+version = "1.0.0"
+id = "artifacts/hospital-card-printer"
+router = "path"
+
+[[services]]
+name = "web"
+paths = [ "/" ]
+localPort = 22956
+
+[services.development]
+run = "pnpm --filter @workspace/hospital-card-printer run dev"
+
+[services.production]
+build = [ "pnpm", "--filter", "@workspace/hospital-card-printer", "run", "build" ]
+serve = "static"
+publicDir = "artifacts/hospital-card-printer/dist/public"
+
+[[services.production.rewrites]]
+from = "/*"
+to = "/index.html"
+
+[services.env]
+PORT = "22956"
+BASE_PATH = "/"
