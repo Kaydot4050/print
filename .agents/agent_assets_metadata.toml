@@ -1,0 +1,9 @@
+uploads = []
+generated = []
+
+[[outputs]]
+id = "lNNbbFhfElPeNmwJx8egU"
+uri = "file://.agents/outputs/hospital-card-printer-offline.zip"
+type = "unspecified"
+title = "Hospital Card Printer — Offline Package"
+description = "Self-contained offline package with the built card printer, local server, logo assets, and setup instructions for the hospital network."

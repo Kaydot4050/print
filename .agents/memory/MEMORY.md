@@ -1,0 +1,1 @@
+- [Offline deployment](offline-deployment.md) — The card printer is designed to run entirely on the hospital’s local network without Internet access.
