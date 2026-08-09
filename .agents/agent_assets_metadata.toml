@@ -5,5 +5,5 @@ generated = []
 id = "lNNbbFhfElPeNmwJx8egU"
 uri = "file://.agents/outputs/hospital-card-printer-offline.zip"
 type = "unspecified"
-title = "Hospital Card Printer — Offline Package"
-description = "Self-contained offline package with the built card printer, local server, logo assets, and setup instructions for the hospital network."
+title = "Hospital Card Printer — Corrected Offline Package"
+description = "Corrected package with package.json, public application files, offline-server.mjs, and updated setup instructions. Start with node offline-server.mjs or npm start."

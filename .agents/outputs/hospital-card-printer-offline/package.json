@@ -1,0 +1,11 @@
+{
+  "name": "hospital-card-printer-offline",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline local-network server for the Hospital Card Printer",
+  "type": "module",
+  "scripts": {
+    "start": "node offline-server.mjs",
+    "build": "node -e \"console.log('This offline package is already built. Run npm start to start the local server.')\""
+  }
+}

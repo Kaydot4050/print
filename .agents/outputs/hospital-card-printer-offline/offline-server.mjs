@@ -4,7 +4,10 @@ import { extname, join, normalize, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const appDirectory = resolve(fileURLToPath(new URL('.', import.meta.url)));
-const publicDirectory = resolve(appDirectory, 'dist/public');
+const publicDirectory = [
+  resolve(appDirectory, 'public'),
+  resolve(appDirectory, 'dist/public'),
+].find((directory) => existsSync(directory));
 const port = Number(process.env.PORT ?? 8080);
 const host = process.env.HOST ?? '0.0.0.0';
 
@@ -19,8 +22,8 @@ const contentTypes = {
   '.webp': 'image/webp',
 };
 
-if (!existsSync(publicDirectory)) {
-  console.error(`Build not found at ${publicDirectory}. Run "pnpm run build" first.`);
+if (!publicDirectory) {
+  console.error('Built files were not found. The offline ZIP should contain a public folder.');
   process.exit(1);
 }
 

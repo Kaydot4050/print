@@ -14,25 +14,32 @@ pnpm --filter @workspace/hospital-card-printer run build
 
 Copy these items to the hospital's local server:
 
-- `artifacts/hospital-card-printer/dist/public/`
-- `artifacts/hospital-card-printer/offline-server.mjs`
+- `public/`
+- `offline-server.mjs`
+- `package.json` (optional, included so `npm start` works)
 
 Node.js must be installed on the local server. The server does not need
 Internet access after the built files have been copied.
 
 ## Start the local server
 
-From the `hospital-card-printer` folder, run:
+From the extracted offline package folder, run:
 
 ```bash
-PORT=8080 node offline-server.mjs
+node offline-server.mjs
 ```
 
 On Windows PowerShell:
 
 ```powershell
-$env:PORT = "8080"
 node .\offline-server.mjs
+```
+
+Do not run `pnpm run build` on the offline package. The application is already
+compiled inside the `public/` folder. You can also start it with:
+
+```bash
+npm start
 ```
 
 Open `http://localhost:8080` on the server computer. Other computers on the
