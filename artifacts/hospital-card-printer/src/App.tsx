@@ -17,8 +17,10 @@ type CardDetails = {
   ghimsNumber: string;
 };
 
+type CardVersion = 'v1' | 'v2';
+
 const queryClient = new QueryClient();
-const initialDetails: CardDetails = {
+const initialV1Details: CardDetails = {
   clientName: 'Ama Serwaa Mensah',
   dateOfBirth: '14 / 06 / 1991',
   dateOfIssue: '08 / 03 / 2025',
@@ -27,14 +29,51 @@ const initialDetails: CardDetails = {
   ghimsNumber: 'GH-2025-083741',
 };
 
-const fields: Array<{ key: keyof CardDetails; label: string; placeholder: string; hint?: string; icon: typeof UserRound }> = [
-  { key: 'clientName', label: 'Client name', placeholder: 'Enter full name', hint: 'As shown on official ID', icon: UserRound },
-  { key: 'dateOfBirth', label: 'Date of birth', placeholder: 'DD / MM / YYYY', hint: 'Use day / month / year', icon: CalendarDays },
-  { key: 'dateOfIssue', label: 'Date of issue', placeholder: 'DD / MM / YYYY', icon: CalendarDays },
-  { key: 'insuranceNumber', label: 'NHIS / PRV insu no.', placeholder: 'Enter insurance number', icon: ShieldCheck },
-  { key: 'gender', label: 'Gender', placeholder: 'e.g. Female', icon: UserRound },
-  { key: 'ghimsNumber', label: 'GHIMS no.', placeholder: 'Enter GHIMS number', hint: 'Generates the barcode below', icon: Activity },
-];
+const initialV2Details: CardDetails = {
+  clientName: 'DORIS ESSOUN',
+  dateOfBirth: '01-Jan-1990',
+  dateOfIssue: '09-Aug-2026',
+  insuranceNumber: '',
+  gender: 'Female',
+  ghimsNumber: 'C-0054-26080842',
+};
+
+const blankDetails: CardDetails = {
+  clientName: '',
+  dateOfBirth: '',
+  dateOfIssue: '',
+  insuranceNumber: '',
+  gender: '',
+  ghimsNumber: '',
+};
+
+function getVersionContent(version: CardVersion) {
+  return version === 'v1'
+    ? {
+        label: 'LIHMS',
+        placeholder: 'DD / MM / YYYY',
+        dateHint: 'Use day / month / year',
+        sample: initialV1Details,
+      }
+    : {
+        label: 'GHIMS',
+        placeholder: 'DD-Mmm-YYYY',
+        dateHint: 'Use day - month - year',
+        sample: initialV2Details,
+      };
+}
+
+function getFields(version: CardVersion): Array<{ key: keyof CardDetails; label: string; placeholder: string; hint?: string; icon: typeof UserRound }> {
+  const content = getVersionContent(version);
+  return [
+    { key: 'clientName', label: 'Client name', placeholder: 'Enter full name', hint: 'As shown on official ID', icon: UserRound },
+    { key: 'dateOfBirth', label: 'Date of birth', placeholder: content.placeholder, hint: content.dateHint, icon: CalendarDays },
+    { key: 'dateOfIssue', label: 'Date of issue', placeholder: content.placeholder, icon: CalendarDays },
+    { key: 'insuranceNumber', label: 'NHIS / PRV insu no.', placeholder: 'Enter insurance number', icon: ShieldCheck },
+    { key: 'gender', label: 'Gender', placeholder: 'e.g. Female', icon: UserRound },
+    { key: 'ghimsNumber', label: `${content.label} no.`, placeholder: `Enter ${content.label} number`, hint: 'Generates the barcode below', icon: Activity },
+  ];
+}
 
 function barcodePattern(value: string) {
   const source = value.trim() || 'GHIMS';
@@ -46,11 +85,12 @@ function barcodePattern(value: string) {
   return bars;
 }
 
-function IdCardPreview({ details, print = false }: { details: CardDetails; print?: boolean }) {
+function IdCardPreview({ details, version, print = false }: { details: CardDetails; version: CardVersion; print?: boolean }) {
   const bars = useMemo(() => barcodePattern(details.ghimsNumber), [details.ghimsNumber]);
+  const identifierLabel = getVersionContent(version).label;
   return (
     <div className={print ? 'print-only' : 'preview-card-wrap'}>
-      <article className="id-card" aria-label="Kasoa Polyclinic client identification card" data-testid={print ? 'card-print-preview' : 'card-preview'}>
+      <article className={`id-card id-card-${version}`} aria-label={`Kasoa Polyclinic client identification card ${version}`} data-testid={print ? 'card-print-preview' : 'card-preview'}>
         <header className="card-header">
           <div className="logo-window" aria-hidden="true">
             <img src={facilityLogo} alt="" />
@@ -83,11 +123,10 @@ function IdCardPreview({ details, print = false }: { details: CardDetails; print
               <span className="card-value">{details.gender || '—'}</span>
             </div>
             <div>
-              <span className="card-label">GHIMS NO: {details.ghimsNumber || '—'}</span>
+              <span className="card-label">{identifierLabel} NO: {details.ghimsNumber || '—'}</span>
               <div className="barcode" aria-label={`Barcode for ${details.ghimsNumber || 'empty GHIMS number'}`}>
                 {bars.map((width, index) => <span key={`${width}-${index}`} style={{ width: `${width}px` }} />)}
               </div>
-              <div className="barcode-caption">{details.ghimsNumber || 'GHIMS'}</div>
             </div>
           </div>
         </div>
@@ -97,29 +136,58 @@ function IdCardPreview({ details, print = false }: { details: CardDetails; print
 }
 
 function Home() {
-  const [details, setDetails] = useState<CardDetails>(() => {
+  const [cardVersion, setCardVersion] = useState<CardVersion>(() => {
+    try {
+      const saved = window.localStorage.getItem('kasoa-card-version');
+      return saved === 'v2' ? 'v2' : 'v1';
+    } catch {
+      return 'v1';
+    }
+  });
+  const [detailsByVersion, setDetailsByVersion] = useState<Record<CardVersion, CardDetails>>(() => {
     try {
       const saved = window.localStorage.getItem('kasoa-card-details');
-      return saved ? { ...initialDetails, ...JSON.parse(saved) } : initialDetails;
+      const parsed = saved ? JSON.parse(saved) : null;
+      if (parsed?.v1 && parsed?.v2) {
+        return {
+          v1: { ...initialV1Details, ...parsed.v1 },
+          v2: { ...initialV2Details, ...parsed.v2 },
+        };
+      }
+      return {
+        v1: saved ? { ...initialV1Details, ...parsed } : initialV1Details,
+        v2: initialV2Details,
+      };
     } catch {
-      return initialDetails;
+      return { v1: initialV1Details, v2: initialV2Details };
     }
   });
   const [savedNotice, setSavedNotice] = useState(false);
+  const details = detailsByVersion[cardVersion];
+  const fields = getFields(cardVersion);
 
   useEffect(() => {
-    window.localStorage.setItem('kasoa-card-details', JSON.stringify(details));
+    window.localStorage.setItem('kasoa-card-details', JSON.stringify(detailsByVersion));
     setSavedNotice(true);
     const timeout = window.setTimeout(() => setSavedNotice(false), 1300);
     return () => window.clearTimeout(timeout);
-  }, [details]);
+  }, [detailsByVersion]);
+
+  useEffect(() => {
+    window.localStorage.setItem('kasoa-card-version', cardVersion);
+  }, [cardVersion]);
 
   const completed = Object.values(details).filter((value) => value.trim()).length;
-  const updateField = (key: keyof CardDetails, value: string) => setDetails((current) => ({ ...current, [key]: value }));
-  const resetDetails = () => {
-    setDetails({ clientName: '', dateOfBirth: '', dateOfIssue: '', insuranceNumber: '', gender: '', ghimsNumber: '' });
+  const updateField = (key: keyof CardDetails, value: string) => {
+    setDetailsByVersion((current) => ({
+      ...current,
+      [cardVersion]: { ...current[cardVersion], [key]: value },
+    }));
   };
-  const loadSample = () => setDetails(initialDetails);
+  const resetDetails = () => {
+    setDetailsByVersion((current) => ({ ...current, [cardVersion]: blankDetails }));
+  };
+  const loadSample = () => setDetailsByVersion((current) => ({ ...current, [cardVersion]: getVersionContent(cardVersion).sample }));
 
   return (
     <main className="app-shell noise min-h-[100dvh]">
@@ -150,11 +218,29 @@ function Home() {
                 Make a patient card, <span className="text-[hsl(var(--primary))]">without the wait.</span>
               </h2>
               <p className="mt-5 max-w-md text-sm leading-6 text-[hsl(var(--muted-foreground))]">
-                Enter the client details once. The Kasoa Polyclinic card updates as you type, with a GHIMS barcode ready for the printer.
+                 Enter the client details once. The Kasoa Polyclinic card updates as you type, with a {getVersionContent(cardVersion).label} barcode ready for the printer.
               </p>
             </div>
 
             <div className="rounded-2xl border border-[hsl(var(--border))] bg-white/65 p-4 shadow-[0_15px_40px_hsl(200_35%_25%/.06)] sm:p-5">
+               <div className="version-switch" role="group" aria-label="Choose card version">
+                 <span className="version-switch-label">Card version</span>
+                 <div className="version-switch-options">
+                   {(['v1', 'v2'] as const).map((version) => (
+                     <button
+                       key={version}
+                       className={`version-option ${cardVersion === version ? 'active' : ''}`}
+                       data-testid={`button-${version}`}
+                       type="button"
+                       aria-pressed={cardVersion === version}
+                       onClick={() => setCardVersion(version)}
+                     >
+                       {version.toUpperCase()}
+                       <span>{version === 'v1' ? 'LIHMS' : 'GHIMS'}</span>
+                     </button>
+                   ))}
+                 </div>
+               </div>
               <div className="mb-5 flex items-end justify-between gap-3 border-b border-[hsl(var(--border)/.75)] pb-4">
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-[.15em] text-[hsl(var(--muted-foreground))]">Client details</div>
@@ -208,12 +294,12 @@ function Home() {
               </div>
             </div>
             <div className="card-stage flex min-h-[300px] items-center justify-center rounded-2xl p-5 shadow-[0_22px_45px_hsl(201_43%_15%/.18)] sm:min-h-[420px] sm:p-10">
-              <IdCardPreview details={details} />
+               <IdCardPreview details={details} version={cardVersion} />
             </div>
             <div className="mt-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div className="flex items-center gap-2 text-xs text-[hsl(var(--muted-foreground))]">
                 <ShieldCheck size={15} className="text-[hsl(var(--primary))]" />
-                 <span>CR80 card · 85.6 × 53.98 mm</span>
+                 <span>CR80 card · 85.6 × 53.98 mm · {cardVersion.toUpperCase()}</span>
               </div>
               <button className="primary-button w-full sm:w-auto" data-testid="button-print" type="button" onClick={() => window.print()}>
                 <Printer size={17} /> Print card
@@ -224,10 +310,10 @@ function Home() {
         </section>
         <footer className="flex flex-wrap items-center justify-between gap-2 border-t border-[hsl(var(--border)/.7)] px-5 py-4 font-mono text-[9px] uppercase tracking-[.13em] text-[hsl(var(--muted-foreground))] sm:px-8 lg:px-12">
           <span>Kasoa Polyclinic · Client services</span>
-          <span>Cardroom v1.0</span>
+           <span>Cardroom {cardVersion.toUpperCase()}</span>
         </footer>
       </div>
-      <IdCardPreview details={details} print />
+       <IdCardPreview details={details} version={cardVersion} print />
     </main>
   );
 }
