@@ -58,7 +58,9 @@ const server = createServer((request, response) => {
   }
 
   response.writeHead(200, {
-    'Cache-Control': 'no-cache',
+    'Cache-Control': 'no-cache, no-store, must-revalidate',
+    'Pragma': 'no-cache',
+    'Expires': '0',
     'Content-Type': contentTypes[extname(filePath)] ?? 'application/octet-stream',
   });
   createReadStream(filePath).pipe(response);

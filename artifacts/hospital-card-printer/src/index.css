@@ -1,5 +1,29 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('./fonts/poppins-latin-500-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('./fonts/poppins-latin-600-normal.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('./fonts/poppins-latin-700-normal.woff2') format('woff2');
+}
 @plugin "@tailwindcss/typography";
 
 @custom-variant dark (&:is(.dark *));
@@ -78,40 +102,40 @@
   --elevate-1: rgba(0, 0, 0, 0.03);
   --elevate-2: rgba(0, 0, 0, 0.08);
 
-  --background: 195 40% 96%;
-  --foreground: 205 28% 17%;
-  --border: 192 22% 84%;
+  --background: 0 35% 97%;
+  --foreground: 0 28% 17%;
+  --border: 0 18% 86%;
   --card: 0 0% 100%;
-  --card-foreground: 205 28% 17%;
-  --card-border: 192 22% 84%;
-  --sidebar: 201 43% 15%;
-  --sidebar-foreground: 195 35% 92%;
-  --sidebar-border: 197 30% 26%;
-  --sidebar-primary: 161 73% 36%;
+  --card-foreground: 0 28% 17%;
+  --card-border: 0 18% 86%;
+  --sidebar: 0 35% 14%;
+  --sidebar-foreground: 0 20% 94%;
+  --sidebar-border: 0 25% 24%;
+  --sidebar-primary: 0 72% 45%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 194 34% 22%;
   --sidebar-accent-foreground: 195 35% 92%;
-  --sidebar-ring: 161 73% 36%;
+  --sidebar-ring: 0 72% 45%;
   --popover: 0 0% 100%;
   --popover-foreground: 205 28% 17%;
   --popover-border: 192 22% 84%;
-  --primary: 161 73% 36%;
+  --primary: 0 72% 45%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 192 31% 90%;
-  --secondary-foreground: 205 28% 22%;
-  --muted: 193 25% 92%;
-  --muted-foreground: 197 15% 45%;
-  --accent: 38 93% 58%;
-  --accent-foreground: 35 45% 17%;
+  --secondary: 0 25% 94%;
+  --secondary-foreground: 0 35% 22%;
+  --muted: 0 18% 94%;
+  --muted-foreground: 0 12% 42%;
+  --accent: 0 78% 92%;
+  --accent-foreground: 0 55% 28%;
   --destructive: 3 69% 49%;
   --destructive-foreground: 0 0% 100%;
-  --input: 192 22% 84%;
-  --ring: 161 73% 36%;
-  --chart-1: 161 73% 36%;
-  --chart-2: 38 93% 58%;
-  --chart-3: 194 60% 53%;
+  --input: 0 18% 86%;
+  --ring: 0 72% 45%;
+  --chart-1: 0 72% 45%;
+  --chart-2: 14 88% 55%;
+  --chart-3: 350 65% 48%;
   --chart-4: 3 69% 49%;
-  --chart-5: 205 28% 27%;
+  --chart-5: 0 28% 27%;
   --app-font-sans: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --app-font-serif: Georgia, serif;
   --app-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", monospace;
@@ -208,31 +232,31 @@
   --sidebar: 205 38% 9%;
   --sidebar-foreground: 195 35% 92%;
   --sidebar-border: 197 30% 22%;
-  --sidebar-primary: 161 73% 42%;
+  --sidebar-primary: 0 72% 50%;
   --sidebar-primary-foreground: 0 0% 100%;
   --sidebar-accent: 194 34% 19%;
   --sidebar-accent-foreground: 195 35% 92%;
-  --sidebar-ring: 161 73% 42%;
+  --sidebar-ring: 0 72% 50%;
   --popover: 202 32% 15%;
   --popover-foreground: 195 35% 92%;
   --popover-border: 197 30% 26%;
-  --primary: 161 73% 42%;
+  --primary: 0 72% 50%;
   --primary-foreground: 0 0% 100%;
-  --secondary: 197 30% 22%;
-  --secondary-foreground: 195 35% 92%;
-  --muted: 197 30% 20%;
-  --muted-foreground: 196 17% 65%;
-  --accent: 38 93% 58%;
-  --accent-foreground: 35 45% 17%;
+  --secondary: 0 18% 20%;
+  --secondary-foreground: 0 10% 92%;
+  --muted: 0 14% 18%;
+  --muted-foreground: 0 10% 68%;
+  --accent: 0 35% 22%;
+  --accent-foreground: 0 80% 90%;
   --destructive: 3 69% 56%;
   --destructive-foreground: 0 0% 100%;
-  --input: 197 30% 26%;
-  --ring: 161 73% 42%;
-  --chart-1: 161 73% 42%;
-  --chart-2: 38 93% 58%;
-  --chart-3: 194 60% 53%;
+  --input: 0 14% 26%;
+  --ring: 0 72% 50%;
+  --chart-1: 0 72% 50%;
+  --chart-2: 14 88% 55%;
+  --chart-3: 350 65% 55%;
   --chart-4: 3 69% 56%;
-  --chart-5: 195 35% 78%;
+  --chart-5: 0 20% 78%;
 
   --shadow-2xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
   --shadow-xs: 0px 2px 0px 0px hsl(202.8169 89.1213% 53.1373% / 0);
@@ -273,8 +297,8 @@ button { cursor: pointer; }
 .app-shell {
   min-height: 100dvh;
   background:
-    radial-gradient(circle at 80% -10%, hsl(161 73% 36% / .11), transparent 30rem),
-    linear-gradient(145deg, hsl(var(--background)), hsl(193 35% 94%));
+    radial-gradient(circle at 80% -10%, hsl(0 72% 45% / .12), transparent 30rem),
+    linear-gradient(145deg, hsl(var(--background)), hsl(0 28% 95%));
 }
 .noise::after {
   content: '';
@@ -294,13 +318,25 @@ button { cursor: pointer; }
     linear-gradient(135deg, hsl(201 43% 15% / .96), hsl(197 42% 22% / .97)),
     repeating-linear-gradient(135deg, transparent 0 18px, hsl(0 0% 100% / .02) 18px 19px);
 }
-.id-card {
-  width: min(100%, 550px);
-  aspect-ratio: 547 / 340;
+.preview-card-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 16px 0;
+  overflow: visible;
+}
+.preview-card-wrap .id-card {
+  width: 85.6mm;
+  height: 53.98mm;
+  min-width: 85.6mm;
+  min-height: 53.98mm;
+  position: relative !important;
+  left: auto !important;
+  top: auto !important;
   overflow: hidden;
-  position: relative;
   border: 1px solid hsl(210 24% 13% / .38);
-  border-radius: 3px;
+  border-radius: 3.18mm;
   background:
     radial-gradient(ellipse at 2% 85%, hsl(194 71% 70% / .36), transparent 45%),
     radial-gradient(ellipse at 74% 61%, hsl(162 50% 83% / .78), transparent 54%),
@@ -308,6 +344,21 @@ button { cursor: pointer; }
   box-shadow: 0 22px 46px hsl(202 50% 7% / .34), 0 2px 0 hsl(0 0% 100% / .26) inset;
   color: #10201e;
   font-family: var(--app-font-sans);
+  transform: scale(1.5);
+  transform-origin: center center;
+  margin: 30px auto;
+}
+@media (max-width: 640px) {
+  .preview-card-wrap .id-card {
+    transform: scale(1.08);
+    margin: 10px auto;
+  }
+}
+@media (min-width: 641px) and (max-width: 1024px) {
+  .preview-card-wrap .id-card {
+    transform: scale(1.3);
+    margin: 20px auto;
+  }
 }
 .id-card::after {
   content: '';
@@ -319,52 +370,44 @@ button { cursor: pointer; }
   mix-blend-mode: multiply;
 }
 .card-header {
-  height: 28%;
-  min-height: 63px;
+  height: 14.6mm;
   position: relative;
   z-index: 1;
   display: flex;
   align-items: center;
-  gap: 22px;
-  padding: 9px 20px;
+  gap: 3.5mm;
+  padding: 1.5mm 3.2mm;
   color: hsl(0 0% 100%);
   background: linear-gradient(100deg, #009b4d, #008c43);
-  border-bottom: 3px solid #f1d334;
+  border-bottom: 0.6mm solid #f1d334;
 }
 .logo-window {
-  width: 66px;
-  height: 66px;
+  width: 10.5mm;
+  height: 10.5mm;
   overflow: hidden;
   flex: none;
   position: relative;
   background: #fff;
-  border: 1px solid hsl(0 0% 100% / .8);
+  border: 0.2mm solid hsl(0 0% 100% / .8);
 }
 .logo-window img {
-  width: 454px;
+  width: 72mm;
   max-width: none;
   position: absolute;
-  left: -13px;
-  top: -11px;
+  left: -2.1mm;
+  top: -1.7mm;
 }
-.facility-name { font-size: clamp(17px, 3.4vw, 31px); font-weight: 800; letter-spacing: .025em; line-height: 1; white-space: nowrap; }
+.facility-name { font-size: 11pt; font-weight: 800; letter-spacing: .025em; line-height: 1; white-space: nowrap; }
 .card-title {
   position: absolute;
   z-index: 2;
-  top: 29.5%;
-  right: 3.1%;
+  top: 15.5mm;
+  right: 2.5mm;
   margin: 0;
   color: #d73d38;
-  font-size: clamp(10px, 2vw, 18px);
+  font-size: 5.2pt;
   font-weight: 800;
   letter-spacing: .01em;
-}
-.card-content {
-  position: relative;
-  z-index: 1;
-  height: 72%;
-  padding: 8.5% 3.3% 3%;
-  font-weight: 700;
 }
 .version-switch {
   display: flex;
@@ -422,10 +465,29 @@ button { cursor: pointer; }
 .card-label { display: block; font-size: clamp(7px, 1.6vw, 13px); line-height: 1.05; font-weight: 800; }
 .card-value { display: block; font-size: clamp(9px, 2vw, 17px); line-height: 1.1; margin-top: 1px; font-weight: 700; }
 .card-client { margin-bottom: 12px; }
-.card-grid { display: grid; grid-template-columns: 1fr 1.15fr 1.25fr; gap: 11px; }
-.card-ghims-row { display: grid; grid-template-columns: 1fr 2.45fr; gap: 11px; align-items: end; margin-top: 13px; }
-.barcode { height: clamp(28px, 8vw, 55px); display: flex; align-items: stretch; padding: 4px 8px; background: #fff; overflow: hidden; }
-.barcode span { display: block; flex: none; background: #080b0b; height: 100%; }
+.card-client .card-label { display: block; }
+.card-client .card-value { display: block; margin-top: 1px; }
+/* Match real PVC: DOB + Issue left/center, NHIS sits further right */
+.card-grid { display: grid; grid-template-columns: 1fr 1.2fr 1.6fr; gap: 11px; }
+.card-nhis {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: max-content;
+  max-width: 100%;
+}
+.card-nhis .card-label { text-align: left; }
+.card-nhis-value { text-align: left; width: 100%; }
+.card-ghims-row { display: grid; grid-template-columns: 1fr 2.45fr; gap: 11px; align-items: start; margin-top: 13px; }
+.card-col-gender { display: flex; flex-direction: column; padding-top: 12px; }
+.card-col-identifier { display: flex; flex-direction: column; gap: 0; }
+.card-identifier-row { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; line-height: 1; }
+.card-identifier-row .card-label { white-space: nowrap; }
+.card-identifier-row .card-value { margin-top: 0; }
+.barcode { height: clamp(24px, 7vw, 42px); display: flex; align-items: stretch; padding: 3px 6px; background: #fff; overflow: hidden; margin-top: 2px; filter: blur(var(--print-text-blur, 0px)); }
+.barcode span { display: block; flex: none; height: 100%; }
+.barcode .barcode-bar { background: #080b0b; }
+.barcode .barcode-gap { background: transparent; }
 .barcode span:nth-child(3n) { margin-right: 2px; }
 
 .field-label { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: hsl(var(--foreground)); font-size: .73rem; font-weight: 800; letter-spacing: .09em; text-transform: uppercase; }
@@ -445,7 +507,7 @@ button { cursor: pointer; }
   transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
 }
 .primary-button { color: hsl(var(--primary-foreground)); background: hsl(var(--primary)); box-shadow: 0 7px 15px hsl(var(--primary) / .22); }
-.primary-button:hover { background: hsl(161 73% 31%); transform: translateY(-1px); box-shadow: 0 9px 18px hsl(var(--primary) / .29); }
+.primary-button:hover { background: hsl(0 72% 38%); transform: translateY(-1px); box-shadow: 0 9px 18px hsl(var(--primary) / .29); }
 .secondary-button { color: hsl(var(--foreground)); background: hsl(0 0% 100% / .62); border-color: hsl(var(--border)); }
 .secondary-button:hover { background: hsl(0 0% 100% / .98); transform: translateY(-1px); }
 .primary-button:focus-visible, .secondary-button:focus-visible, .field-input:focus-visible { outline: 3px solid hsl(var(--accent) / .65); outline-offset: 2px; }
@@ -485,19 +547,48 @@ button { cursor: pointer; }
     top: 0;
     width: 85.6mm;
     height: 53.98mm;
+    overflow: hidden !important;
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
-  .print-only .id-card {
-    width: 85.6mm;
-    height: 53.98mm;
-    border: 0;
-    border-radius: 0;
-    box-shadow: none;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
+  .print-film {
+    overflow: hidden !important;
+    background: transparent !important;
   }
-  .print-only .card-header { min-height: 0; }
+  .print-film-content-box {
+    overflow: visible !important;
+  }
+  .print-film-label,
+  .print-film-value,
+  .print-film-identifier,
+  .print-film-nhis-value,
+  .print-film-row-name .print-film-label,
+  .print-film-row-name .print-film-value {
+    color: #000 !important;
+    font-weight: var(--print-label-weight, 600) !important;
+    -webkit-text-stroke: 0 !important;
+    paint-order: normal;
+    filter: blur(var(--print-text-blur, 0px)) !important;
+  }
+  .print-film-v2 .print-film-label,
+  .print-film-v2 .print-film-value,
+  .print-film-v2 .print-film-identifier,
+  .print-film-v2 .print-film-nhis-value,
+  .print-film-v2 .print-film-row-name .print-film-label,
+  .print-film-v2 .print-film-row-name .print-film-value {
+    font-weight: var(--print-value-weight, 700) !important;
+    -webkit-text-stroke: 0.012em #000 !important;
+    paint-order: stroke fill !important;
+  }
+  .print-film-barcode {
+    filter: blur(var(--print-text-blur, 0px)) !important;
+  }
+  .print-film-barcode .barcode-bar {
+    background: #000 !important;
+  }
+  .print-film-barcode .barcode-gap {
+    background: transparent !important;
+  }
 }
 
 /**
@@ -601,13 +692,381 @@ button { cursor: pointer; }
   .active-elevate-2:active:not(.no-default-active-elevate)::after {
     background-color: var(--elevate-2);
   }
+}
 
-  /* If there's a 1px border, adjust the inset so that it covers that parent's border */
-  .border.hover-elevate:not(.no-hover-interaction-elevate)::after,
-  .border.active-elevate:not(.no-active-interaction-elevate)::after,
-  .border.hover-elevate-2:not(.no-hover-interaction-elevate)::after,
-  .border.active-elevate-2:not(.no-active-interaction-elevate)::after,
-  .border.hover-elevate:not(.no-hover-interaction-elevate)::after {
-    inset: -1px;
+.print-only { display: none; }
+.print-only .print-film { display: block !important; position: absolute; left: 0; top: 0; width: 85.6mm; height: 53.98mm; overflow: hidden; }
+.print-film { display: block; width: 85.6mm; height: 53.98mm; overflow: hidden; position: relative; }
+.print-film .id-card { width: 85.6mm; height: 53.98mm; border: 0; border-radius: 0; box-shadow: none; }
+.print-film-content-box {
+  position: absolute;
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 0.8mm;
+}
+.print-film-row { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4mm 1mm; line-height: 1.05; }
+/* Name: label above value (matches PVC — not inline) */
+.print-film-row-name {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.4mm;
+  margin-bottom: 0.6mm;
+}
+.print-film-label {
+  display: block;
+  font-size: var(--print-label-size, 4.4pt);
+  font-weight: var(--print-label-weight, 600);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #080b0b;
+  line-height: 1.05;
+}
+/* Printed labels + values — same weight, no extra stroke */
+.print-film .print-film-label,
+.print-film .print-film-value,
+.print-film .print-film-identifier,
+.print-film .print-film-nhis-value,
+.print-film .print-film-row-name .print-film-label,
+.print-film .print-film-row-name .print-film-value {
+  font-weight: var(--print-label-weight, 600) !important;
+  -webkit-text-stroke: 0;
+  paint-order: normal;
+  filter: blur(var(--print-text-blur, 0px));
+}
+.print-film-value {
+  display: block;
+  font-size: var(--print-value-size, 6.8pt);
+  font-weight: var(--print-value-weight, 600);
+  color: #080b0b;
+  line-height: 1.1;
+  margin-top: 0.3mm;
+}
+.print-film-row-name .print-film-label { white-space: nowrap; margin: 0; }
+.print-film-row-name .print-film-value {
+  margin-top: 0;
+  font-size: var(--print-name-size, 7pt);
+  font-weight: var(--print-name-weight, 700);
+}
+/* V2: client name up 0.2mm */
+.print-film-v2 .print-film-row-name {
+  margin-top: -0.2mm;
+  position: relative;
+  top: -0.2mm;
+}
+.id-card-v2 .card-client {
+  margin-top: -1.5px; /* ~0.2mm at preview scale */
+  position: relative;
+  top: -1.5px;
+}
+.print-film-identifier {
+  font-size: var(--print-identifier-size, 6.8pt);
+  font-weight: var(--print-identifier-weight, 700);
+}
+/* V1: LIHMS no. MUST match NHIS / date value size (beats .print-film-identifier) */
+.print-film-v1 .print-film-value.print-film-identifier {
+  font-size: var(--print-value-size, 6.8pt) !important;
+  font-weight: var(--print-value-weight, 700) !important;
+}
+.id-card-v1 .card-value.card-identifier-value {
+  font-size: clamp(9px, 2vw, 17px);
+}
+/* Match real PVC card: DOB | Issue clustered left, NHIS further right (~58%+) */
+.print-film-3col { display: grid; grid-template-columns: 19mm 19mm 1fr; gap: 1mm; align-items: start; }
+/* V1: mid row (DOB / DATE ISSUED / NHIS) down 0.2mm */
+.print-film-v1 .print-film-3col {
+  margin-top: 0.2mm;
+}
+.print-film-col { display: flex; flex-direction: column; min-width: 0; overflow: visible; }
+.print-film-3col .print-film-col-nhis .print-film-label {
+  white-space: nowrap;
+}
+/* NHIS value left-aligned under label; horizontal nudge via --print-nhis-offset-x */
+.print-film-col-nhis {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: max-content;
+  max-width: 100%;
+  justify-self: start;
+  transform: translateX(var(--print-nhis-offset-x, 0mm));
+}
+.print-film-col-nhis .print-film-label {
+  text-align: left;
+  white-space: nowrap;
+}
+.print-film-col-nhis .print-film-nhis-value {
+  text-align: left;
+  width: 100%;
+  margin-top: 0.3mm;
+}
+.print-film-col .print-film-label {
+  white-space: nowrap;
+  max-width: 100%;
+}
+.print-film-bottom { display: grid; grid-template-columns: 19mm 1fr; gap: 1mm; align-items: start; margin-top: 0.5mm; }
+.print-film-col-gender { display: flex; flex-direction: column; padding-top: 3.5mm; margin-left: 0.3mm; }
+.print-film-v2 .print-film-col-gender {
+  transform: translate(0.5mm, -0.2mm); /* right a bit more · keep up 0.2 */
+}
+.id-card-v1 .card-ghims-row > div:first-child,
+.id-card-v2 .card-ghims-row > div:first-child {
+  margin-left: 2px;
+}
+.print-film-col-identifier { display: flex; flex-direction: column; min-width: 0; margin-left: 0; gap: 0; }
+.print-film-identifier-row { display: flex; align-items: baseline; gap: 0.8mm; flex-wrap: wrap; line-height: 1; }
+.print-film-identifier-row .print-film-value { margin-top: 0; }
+.print-film-barcode { height: 7.2mm; max-height: 7.2mm; display: flex; align-items: stretch; padding: 0.25mm 0.6mm; background: #fff; overflow: hidden; margin-top: 0.25mm; filter: blur(var(--print-text-blur, 0px)); }
+.print-film-barcode span { display: block; flex: none; height: 100%; }
+.print-film-barcode .barcode-bar { background: #080b0b; }
+.print-film-barcode .barcode-gap { background: transparent; }
+.print-film-barcode span:nth-child(3n) { margin-right: 0.3mm; }
+
+/* Horizontal: under green header + yellow line (PVC ~15–16mm) */
+.print-orientation-horizontal .print-film-horizontal-box {
+  left: 1.6mm;
+  right: 1.4mm;
+  top: 14.6mm;
+  bottom: auto;
+  width: auto;
+  height: auto;
+  max-height: 34mm;
+  padding: 0;
+  overflow: visible;
+  gap: 1mm;
+}
+
+/* Vertical: sketch inner box — past branding 15+5mm, margins 2mm, 81×30mm */
+.print-orientation-vertical .print-film-vertical-box {
+  left: 2.1mm;
+  top: 20.1mm;
+  width: 81mm;
+  height: 30mm;
+  right: auto;
+  bottom: auto;
+  padding: 0.8mm 1mm;
+  flex-direction: row;
+  align-items: stretch;
+  gap: 1.5mm;
+}
+.print-orientation-vertical .print-film-vertical-fields {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.4mm;
+  overflow: hidden;
+}
+.print-orientation-vertical .print-film-vertical-barcode-wrap {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: stretch;
+  width: 9mm;
+  max-width: 9mm;
+}
+.print-orientation-vertical .print-film-barcode {
+  width: 55.6mm;
+  max-width: 55.6mm;
+  height: 8mm;
+  margin: 0 0.2mm;
+  padding-block: 0;
+  padding-inline: 0.3mm;
+  align-self: center;
+  transform: rotate(-90deg);
+  transform-origin: center center;
+}
+.print-orientation-vertical .print-film-row {
+  gap: 0.4mm 1mm;
+  margin: 0;
+}
+.print-orientation-vertical .print-film-label,
+.print-orientation-vertical .print-film-value {
+  line-height: 1.05;
+}
+
+.print-only.rotate-180,
+.print-film.rotate-180 {
+  transform: rotate(180deg);
+  transform-origin: center center;
+}
+
+/* V2: same spacing/size as V1; Poppins + all bold */
+.id-card-v2,
+.id-card-v2 .card-label,
+.id-card-v2 .card-value,
+.id-card-v2 .facility-name,
+.id-card-v2 .card-title,
+.print-film-v2,
+.print-film-v2 .print-film-content-box,
+.print-film-v2 .print-film-label,
+.print-film-v2 .print-film-value {
+  font-family: 'Poppins', 'Century Gothic', Futura, sans-serif;
+}
+.print-film-v2 .print-film-label {
+  font-size: var(--print-label-size, 5.0pt);
+  letter-spacing: 0.02em;
+}
+/* V2: Poppins reads light — tiny stroke on preview + print, equal labels/values */
+.id-card-v2 .card-label,
+.id-card-v2 .card-value,
+.id-card-v2 .card-client {
+  -webkit-text-stroke: 0.012em currentColor;
+  paint-order: stroke fill;
+}
+.print-film-v2 .print-film-label,
+.print-film-v2 .print-film-value,
+.print-film-v2 .print-film-identifier,
+.print-film-v2 .print-film-nhis-value,
+.print-film-v2 .print-film-row-name .print-film-label,
+.print-film-v2 .print-film-row-name .print-film-value {
+  font-weight: var(--print-value-weight, 700);
+  -webkit-text-stroke: 0.012em currentColor;
+  paint-order: stroke fill;
+}
+.id-card-v2 .nhis-slash-v2,
+.print-film-v2 .nhis-slash-v2 {
+  display: inline-block;
+  transform: translateY(0.06em) scaleY(0.88);
+  transform-origin: 50% 55%;
+  vertical-align: baseline;
+}
+.print-film-v2 .print-film-value,
+.print-film-v2 .print-film-identifier {
+  letter-spacing: normal;
+}
+.print-film-v2 .print-film-identifier { font-size: var(--print-value-size, 6.4pt); }
+/* V2: date / NHIS / GHIMS values slightly smaller; keep client name */
+.print-film-v2 .print-film-value,
+.print-film-v2 .print-film-identifier,
+.print-film-v2 .print-film-nhis-value {
+  font-size: var(--print-value-size, 6.4pt);
+}
+.print-film-v2 .print-film-row-name .print-film-value {
+  font-size: var(--print-name-size, 7pt);
+}
+.print-film-v2 .print-film-row-name {
+  margin-top: -0.1mm;
+  position: relative;
+  top: -0.1mm;
+}
+.print-film-v2 .print-film-nhis-value { padding-left: 0; text-align: left; }
+.id-card-v2 .card-grid .card-value,
+.id-card-v2 .card-ghims-row .card-value,
+.id-card-v2 .card-nhis-value {
+  font-size: clamp(8px, 1.85vw, 15.5px);
+}
+
+/* Shared V1/V2 spacing (match V1 layout) */
+.print-film-v1 .print-film-col-nhis {
+  margin-left: -3mm;
+}
+/* V2 NHIS: base +1.5mm plus settings offset */
+.print-film-v2 .print-film-col-nhis {
+  margin-left: 0;
+  transform: translateX(calc(1.5mm + var(--print-nhis-offset-x, 0mm)));
+}
+.id-card-v2 .card-grid > div:last-child,
+.id-card-v2 .card-nhis {
+  margin-left: 0;
+  transform: translateX(calc(8px + var(--print-nhis-offset-x, 0mm)));
+}
+.print-film-v1 .print-film-col-identifier,
+.print-film-v2 .print-film-col-identifier {
+  margin-left: -3.5mm;
+}
+/* V1: LIHMS no. + barcode — vertical via --print-identifier-offset-y */
+.print-film-v1 .print-film-col-identifier {
+  margin-left: -2.5mm;
+  margin-top: 0;
+  position: relative;
+  top: 0;
+  transform: translateY(var(--print-identifier-offset-y, -0.2mm));
+}
+/* V2: GHIMS no. + barcode — vertical via --print-identifier-offset-y */
+.print-film-v2 .print-film-col-identifier {
+  margin-left: -2.6mm;
+  transform: translateY(var(--print-identifier-offset-y, 0.3mm));
+}
+.id-card-v1 .print-film-col-nhis {
+  margin-left: -6px;
+}
+.id-card-v2 .print-film-col-nhis,
+.id-card-v2 .card-nhis {
+  margin-left: 0;
+  transform: translateX(calc(8px + var(--print-nhis-offset-x, 0mm)));
+}
+/* V1 preview: mid row down 0.2mm (same as print film) */
+.id-card-v1 .card-grid {
+  margin-top: 0.2mm;
+}
+
+.print-film-v1 .print-film-barcode { height: 5mm; max-height: 5mm; width: 47.6mm; max-width: 47.6mm; margin-top: 0.25mm; margin-inline: 0.2mm; }
+.print-film-v2 .print-film-barcode { height: 5mm; max-height: 5mm; width: 39.0mm; max-width: 39.0mm; margin-top: 0.25mm; margin-left: 1.5mm; margin-right: 0.2mm; }
+/* V1 + V2: same bar spacing */
+.print-film-v1 .print-film-barcode,
+.print-film-v2 .print-film-barcode { padding-inline: 0.3mm; }
+.print-film-v1 .print-film-barcode span:nth-child(3n),
+.print-film-v2 .print-film-barcode span:nth-child(3n) { margin-right: 0.08mm; }
+.id-card-v1 .barcode span:nth-child(3n),
+.id-card-v2 .barcode span:nth-child(3n) { margin-right: 2px; }
+.id-card-v1 .barcode,
+.id-card-v2 .barcode {
+  padding-inline: 5px;
+  transform: scaleX(0.9917);
+  transform-origin: left center;
+}
+.print-orientation-vertical.print-film-v1 .print-film-barcode,
+.print-orientation-vertical.print-film-v2 .print-film-barcode { height: 6mm; max-height: 6mm; }
+
+@media print {
+  .print-film-v1 .print-film-barcode { width: 47.6mm !important; max-width: 47.6mm !important; height: 5mm !important; max-height: 5mm !important; margin-top: 0.25mm !important; margin-inline: 0.2mm !important; padding-inline: 0.3mm !important; }
+  .print-film-v2 .print-film-barcode { width: 39.0mm !important; max-width: 39.0mm !important; height: 5mm !important; max-height: 5mm !important; margin-top: 0.25mm !important; margin-left: 1.5mm !important; margin-right: 0.2mm !important; padding-inline: 0.3mm !important; }
+  .print-film-v1 .print-film-barcode span:nth-child(3n),
+  .print-film-v2 .print-film-barcode span:nth-child(3n) { margin-right: 0.08mm !important; }
+  .print-orientation-vertical.print-film-v1 .print-film-barcode,
+  .print-orientation-vertical.print-film-v2 .print-film-barcode { width: 55.6mm !important; max-width: 55.6mm !important; height: 6mm !important; max-height: 6mm !important; margin-inline: 0.2mm !important; padding-inline: 0.3mm !important; }
+  .print-film-3col { grid-template-columns: 19mm 19mm 1fr !important; gap: 1mm !important; }
+  .print-film-v1 .print-film-3col { margin-top: 0.2mm !important; }
+  .print-film-v2 .print-film-row-name {
+    margin-top: -0.1mm !important;
+    position: relative !important;
+    top: -0.1mm !important;
+  }
+  .print-film-v1 .print-film-value.print-film-identifier {
+    font-size: var(--print-value-size, 6.8pt) !important;
+    font-weight: var(--print-value-weight, 700) !important;
+  }
+  .print-film-bottom { grid-template-columns: 19mm 1fr !important; gap: 1mm !important; }
+  .print-film-col-gender { padding-top: 3.5mm !important; margin-left: 0.3mm !important; }
+  .print-film-v2 .print-film-col-gender { transform: translate(0.5mm, -0.2mm) !important; }
+  .print-film-v1 .print-film-col-identifier {
+    margin-left: -2.5mm !important;
+    margin-top: 0 !important;
+    position: relative !important;
+    top: 0 !important;
+    transform: translateY(var(--print-identifier-offset-y, -0.2mm)) !important;
+  }
+  .print-film-v2 .print-film-col-identifier {
+    margin-left: -2.6mm !important;
+    transform: translateY(var(--print-identifier-offset-y, 0.3mm)) !important;
+  }
+  .print-film-col-nhis {
+    transform: translateX(var(--print-nhis-offset-x, 0mm)) !important;
+  }
+  .print-film-v1 .print-film-col-nhis { margin-left: -3mm !important; }
+  .print-film-v2 .print-film-col-nhis {
+    margin-left: 0 !important;
+    transform: translateX(calc(1.5mm + var(--print-nhis-offset-x, 0mm))) !important;
+  }
+  .print-orientation-horizontal .print-film-horizontal-box {
+    overflow: visible !important;
+    max-height: 34mm !important;
+    left: 1.6mm !important;
+    right: 1.4mm !important;
+    top: 14.6mm !important;
   }
 }

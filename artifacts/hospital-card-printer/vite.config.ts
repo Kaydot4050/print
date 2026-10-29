@@ -48,6 +48,8 @@ export default defineConfig({
     dedupe: ['react', 'react-dom'],
   },
   root: path.resolve(import.meta.dirname),
+  // Offline serve folder is also named public/; don't copy it into the build output.
+  publicDir: false,
   build: {
     outDir: path.resolve(import.meta.dirname, 'dist/public'),
     emptyOutDir: true,

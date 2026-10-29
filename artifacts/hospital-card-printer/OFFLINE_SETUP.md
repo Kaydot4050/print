@@ -60,3 +60,7 @@ choose the Magicard 300, and use:
 - Scale: 100% / Actual size
 - Browser headers and footers: disabled
 - Background graphics: enabled, if offered
+
+The PVC card artwork, headings, and field labels are not printed. The print
+layer outputs only the entered values and barcode so it can be aligned over
+the pre-printed card.
